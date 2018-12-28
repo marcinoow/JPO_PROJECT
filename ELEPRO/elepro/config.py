@@ -14,7 +14,7 @@ class Config():
     """
 
     DEBUG = False
-    SECRET_KEY = '9da539cebcb6ab591de53483af7b0cf8'
+    SECRET_KEY = ''
 
     # Database.
     SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:\
@@ -22,7 +22,7 @@ class Config():
 
     # Rechapta.
     RECAPTCHA_PUBLIC_KEY = '6LdKt4QUAAAAAC9eaeVlrjl0sE7RaVk5nWjpZzPt'
-    RECAPTCHA_PRIVATE_KEY = '6LdKt4QUAAAAAM_v8h68eu7LjEvx22Y__-jq3OrW'
+    RECAPTCHA_PRIVATE_KEY = ''
     RECAPTCHA_PARAMETERS = {'hl': 'pl'}
 
     # Mail.
