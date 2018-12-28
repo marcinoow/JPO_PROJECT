@@ -1,0 +1,65 @@
+{% extends "layout/base.html" %}
+
+{% block page_content %}
+  <div class="form-container text-center mx-auto  pt-2 pb-4 px-1">
+    {% include "includes/_flash_messages.html" %}
+    <legend class="border-bottom mb-4"><h1 class="display-4 ele-title">Mój profil</h1></legend>
+    <img class="rounded" src="{{ image_file }}" alt="User picture">
+    <h3 class="font-weight-light">{{ current_user.username }}</h3>
+    <p class="text-secondary">{{ current_user.email }}</p>
+    <!-- User update form -->
+    <div class="content-section border-top">
+      <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token() }}
+        <fieldset class="form-group">
+          <div class="form-group">
+            {{ form.username.label(class="form-control-label lead mt-3") }}
+            {% if form.username.errors %}
+              {{ form.username(class="form-control is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.username(class="form-control") }}
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.email.label(class="form-control-label lead") }}
+            {% if form.email.errors %}
+              {{ form.email(class="form-control  is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.email(class="form-control") }}
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.picture.label(class="lead") }}
+            <div class="custom-file mb-3">
+              {{ form.picture(class="custom-file-input", id="customFile") }}
+              <label class="custom-file-label" for="customFile">Wybierz plik</label>
+            </div>
+            {% if form.picture.errors %}
+              {% for error in form.picture.errors %}
+                <small>
+                  <span class="text-danger">{{ error }}</span>
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+        <fieldset>
+        <div class="form-group mt-3">
+          {{ form.submit(class="btn btn-block btn-ele") }}
+        </div>
+      </form>
+      <small class="text-muted">
+        <a href="{{ url_for('user.reset_password') }}">Zmień hasło?</a>
+      </small>
+    </div>
+  </div>
+{% endblock %}

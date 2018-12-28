@@ -1,0 +1,38 @@
+{% extends "layout/base.html" %}
+
+{% block page_content %}
+  <div class="form-container text-center mx-auto  pt-2 pb-4 px-1">
+    {% include "includes/_flash_messages.html" %}
+    <form action="" method="POST">
+      {{ form.hidden_tag() }}
+      <legend class="border-bottom mb-4"><h1 class="display-4 ele-title">Potwiedź konto</h1></legend>
+      <div class="form-group">
+        {{ form.email.label(class="form-control-label lead") }}
+        {% if form.email.errors %}
+          {{ form.email(class="form-control is-invalid", placeholder="Wprowadź swój email") }}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.email(class="form-control", placeholder="Wprowadź swój email") }}
+        {% endif %}
+      </div>
+      <!-- Rechapta -->
+      <div class="form-group mt-4 mb-3">
+        {% if form.recaptcha.errors %}
+          {{ form.recaptcha }}
+          <small class="text-danger">
+            <span>To pole jest wymagane.</span>
+          </small>
+        {% else %}
+          {{ form.recaptcha }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-block btn-ele") }}
+      </div>
+    </form>
+  </div>
+{% endblock %}

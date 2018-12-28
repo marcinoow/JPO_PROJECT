@@ -1,0 +1,88 @@
+{% extends "layout/base.html" %}
+
+{% import "includes/_macros.html" as macros %}
+
+{% block page_content %}
+  <!-- START PAGE -->
+  <div class="page-container text-center mx-auto  pt-2 pb-4">
+    {% include "includes/_flash_messages.html" %}
+    <div class="row row-post border-bottom mx-1 pb-2">
+      <div class="col-sm-12 col-md-3 col-lg-3">
+        <img class="rounded mt-3" src="{{ url_for('static', filename='images/pictures_of_users/' + problem.author.image_file) }}" width="80" height=80">
+      </div>
+      <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="text-center">
+          <p class="text-secondary my-1">Opublikowany przez <span style="color: rgb(0, 224, 173);">{{ problem.author.username }}</span></p>
+          <h2><span class="article-title text-secondary">{{ problem.title }}</span></h2>
+        </div>
+        <div class="text-justify">
+          <p class="article-content">{{ problem.content }}</p>
+        </div>
+        <a class="btn btn-sm btn-com" href="{{ url_for('post.problem', problem_id=problem.id) }}#comments">
+          Komentarze <span class="badge badge-light">{{ problem.comments|list|count }}</span>
+        </a>
+        {% if current_user.is_authenticated %}
+          <a class="btn btn-sm btn-ele" href="{{ url_for('post.problem', problem_id=problem.id) }}#your_comment" >Skomentuj</a>
+          {% if current_user == problem.author %}
+            <a class="btn btn-sm btn-up-pro" href="{{ url_for('post.update_problem', problem_id=problem.id) }}" >Edytuj</a>
+            <button type="button" class="btn btn-sm btn-del-pro" data-toggle="modal" data-target="#deleteModal">Usuń</button>
+          {% endif %}
+        {% endif %}
+        {{ macros.modal("deleteModal", "Ten problem zostanie bezpowrotnie usunięty. Chcesz go usunąć?", url_for('post.delete_problem', problem_id=problem.id)) }}
+      </div>
+    </div>
+    <!-- Comments -->
+    <div class="my-3 text-center" id="comments"><p class="lead">Komentarze użytkowników:</p></div>
+    {% if comments.items|length != 0 %}
+      {% for comment in comments.items %}
+        <div class="row border-bottom mx-1 pb-2">
+          <div class="col-sm-12 col-md-3 col-lg-3">
+            <img class="rounded mt-3" src="{{ url_for('static', filename='images/pictures_of_users/' + comment.author.image_file) }}" height="55" width="55">
+          </div>
+          <div class="col-sm-12 col-md-9 col-lg-9">
+            <div clas="text-center">
+              <p class="text-secondary mt-2"><span style="color: rgb(0, 224, 173);">{{ comment.author.username }}</span> napisał:</p>
+            </div>
+            <div clas="text-justify">
+              <p>{{ comment.body }}</p>
+              {% if current_user.is_authenticated and current_user == comment.author %}
+                <a href="" class="badge btn-del-pro" data-toggle="modal" data-target="#deleteModalComment">Usuń komentarz</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {{ macros.modal("deleteModalComment", "Ten komentarz zostanie bezpowrotnie usunięty. Chcesz go usunąć?", url_for('post.delete_comment', comment_id=comment.id)) }}
+      {% endfor %}
+      <!-- Pagination -->
+      {{ macros.pagination_widget_comments(comments, 'post.problem', problem.id) }}
+    {% else %}
+      <p class="border-bottom pb-4">Jeszcze nikt nie skomentował tego problemu. Bądz pierwszą osobą, która go rozwiąże!</p>
+    {% endif %}
+
+    <!-- New Comment -->
+    {% if current_user.is_authenticated %}
+      <form class="comment-form p-2 mx-2" id="your_comment" action="" method="POST">
+        {{ form.csrf_token() }}
+        <fieldset>
+          <div class="form-group">
+            {{ form.body.label(class="form-control-label lead") }}
+            {% if form.body.errors %}
+              {{ form.body(class="form-control is-invalid", rows="8") }}
+              <div class="invalid-feedback">
+                {% for error in form.body.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.body(class="form-control", rows="8") }}
+            {% endif %}
+          </div>
+        <fieldset>
+        <div class="form-group mt-3">
+          {{ form.submit(class="btn btn-block btn-ele") }}
+        </div>
+      </form>
+    {% endif %}
+  </div>
+  <!-- END PAGE -->
+{% endblock %}

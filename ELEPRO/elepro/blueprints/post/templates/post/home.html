@@ -1,0 +1,46 @@
+{% extends "layout/base.html" %}
+
+{% block page_content %}
+  <main role="main" class="container-fluid">
+    <!-- Messages -->
+    {% include "includes/_flash_messages.html" %}
+    <blockquote class="blockquote text-center my-4">
+      <p class="mb-0">Piękno naukowej przygody polega na tym, że nigdy nie zabraknie
+        dalszych znaków zapytania.</p>
+      <footer class="blockquote-footer">
+        <cite title="Source Title">ks. prof. Michał Heller</cite>
+      </footer>
+    </blockquote>
+
+    <div class="row my-3">
+      <div class="col-12 text-center my-4">
+         <h1 class="font-weight-normal">Masz problem związany z elektroniką lub
+           dziedziną z nią spokrewnioną?</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-3 col-lg-3 text-center">
+        <i class="fas fa-list-ul" style="font-size: 36px; color: rgb(0, 204, 153);"></i>
+      </div>
+      <div class="col-md-3 col-lg-3 text-center">
+         <p class="lead">Opisz problem.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-3 col-lg-3 text-center">
+        <i class="fas fa-lightbulb" style="font-size: 36px; color: rgb(255, 255, 0);"></i>
+      </div>
+      <div class="col-md-3 col-lg-3 text-center">
+        <p class="lead">Uzyskaj rozwiązanie.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-3 col-lg-3 text-center">
+        <i class="fas fa-tools" style="font-size: 36px; color: rgb(0, 153, 204);"></i>
+      </div>
+      <div class="col-md-3 col-lg-3 text-center">
+        <p class="lead">Rozwiąż swój prolem!</p>
+      </div>
+    </div>
+  </main>
+{% endblock %}

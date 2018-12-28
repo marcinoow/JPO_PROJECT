@@ -1,0 +1,31 @@
+{% extends "layout/base.html" %}
+
+{% import "includes/_macros.html" as macros %}
+
+{% block page_content %}
+  <div class="page-container text-center mx-auto  pt-2 pb-4">
+    {% include "includes/_flash_messages.html" %}
+    <!-- Problems -->
+    {% for problem in problems.items %}
+      <div class="row row-post border-bottom mx-1 pb-2">
+        <div class="col-sm-12 col-md-3 col-lg-3">
+          <img class="rounded mt-3" src="{{ url_for('static', filename='images/pictures_of_users/' + problem.author.image_file) }}" width="80" height=80">
+        </div>
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <div class="text-center">
+            <p class="text-secondary my-1">Opublikowany przez <span style="color: rgb(0, 224, 173);">{{ problem.author.username }}</span></p>
+            <h2><a class="article-title text-secondary" href="{{ url_for('post.problem', problem_id=problem.id) }}">{{ problem.title }}</a></h2>
+          </div>
+          <div class="text-justify">
+            <p class="article-content">{{ problem.content|truncate(250) }}</p>
+          </div>
+          <a class="btn btn-sm btn-com" href="{{ url_for('post.problem', problem_id=problem.id) }}#comments">
+            Komentarze <span class="badge badge-light">{{ problem.comments|list|count }}</span>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+    <!-- Pagination -->
+    {{ macros.pagination_widget_problems(problems, 'post.problems') }}
+  </div>
+{% endblock %}

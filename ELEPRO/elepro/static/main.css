@@ -1,0 +1,90 @@
+body {
+  background-color: white;
+}
+
+.ele-title {
+  color: rgb(0, 204, 153) !important;
+}
+
+.form-container {
+  max-width: 600px !important;
+}
+
+.btn-ele {
+  background-color: rgb(0, 204, 153);
+  color: rgb(255, 255, 255);
+}
+
+.btn-ele:hover {
+  background-color: rgb(0, 234, 183);
+  color: rgb(255, 255, 255);
+}
+
+.btn-ele-active {
+  background-color: rgb(0, 234, 183);
+  color: rgb(255, 255, 255);
+  text-decoration: underline !important;
+}
+
+.btn-ele-active:hover {
+  background-color: rgb(0, 234, 183);
+  color: rgb(255, 255, 255);
+  text-decoration: underline !important;
+}
+
+.btn-del-pro {
+  background-color: rgb(128, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.btn-del-pro:hover {
+  background-color: rgb(158, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.btn-up-pro {
+  background-color: rgb(0, 102, 153);
+  color: rgb(255, 255, 255);
+}
+
+.btn-up-pro:hover {
+  background-color: rgb(0, 132, 183);
+  color: rgb(255, 255, 255);
+}
+
+.btn-com {
+  background-color: rgb(115, 115, 115);
+  color: rgb(255, 255, 255);
+}
+
+.btn-com:hover {
+  background-color: rgb(145, 145, 145);
+  color: rgb(255, 255, 255);
+}
+
+
+.alert {
+  max-width: 600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.g-recaptcha > div {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.page-container {
+  max-width: 800px;
+}
+
+.pagination {
+   justify-content: center;
+}
+
+.comment-form {
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(0, 204, 153);
+    border-radius: 5px;
+}
