@@ -1,0 +1,302 @@
+
+
+================
+Aplikacja ElePro
+================
+
+.. _item-1:
+
+1. Wprowadzenie do zawartoœci dokumentu
+=======================================
+
+Bie¿¹cy dokument zwiera instrukcjê u¿ytkowania aplikacji ElePro. Opisana jest w nim tak¿e architektura projektu.
+
+2. Spis treœci
+==============
+
+`1. Wprowadzenie do zawartoœci dokumentu`_
+
+`2. Spis treœci`_
+
+`3. Instrukcja u¿ycia`_
+
+    `a. Pierwsze spotkanie z aplikacj¹`_
+
+    `b. Zak³adanie konta w aplikacji`_
+
+    `c. Logowanie`_
+
+    `d. Utworzenie nowego problemu`_
+
+    `e. Zmiana osobistych danych u¿ytkownika`_
+
+`4. Dokumenety projektowe`_
+
+    `a. Wykorzystane technologie`_
+
+    `b. Struktura aplikacji`_
+
+    `c. Konfiguracja aplikacji`_
+
+    `d. Relacje w bazie danych`_
+
+    `e. Blueprints`_
+
+    `f. Widoki`_
+
+    `g. Formularze`_
+
+    `h. Szablony`_
+
+
+3. Instrukcja u¿ycia
+====================
+
+a. Pierwsze spotkanie z aplikacj¹
+---------------------------------
+
+   Adres www.domena.pl (w œrodowisku developerskim: **localhost:5000**) przeniesie nas na stronê aplikacji. Strona www jest prostym blogiem o tematyce elektroniki. U¿ytkownik mo¿e na niej opublikowaæ post ze swoim problemem. Inni u¿ytkownicy rozwi¹¿¹ problem. 
+   W zak³adce *problemy* mo¿emy przeczytaæ najnowsze posty u¿ytkowników. Tylko po rejestracji i zalogowaniu mo¿emy utworzyæ w³asny problem i skomentowaæ         (rozwi¹zaæ) problem innego cz³onka spo³ecznoœci.
+
+b. Zak³adanie konta w aplikacji
+-------------------------------
+
+   W celu za³o¿enia konta udajemy siê do zak³adki *rejestracja*. Wype³niamy formularz. Pola formularza s¹ poddane walidacji po przes³aniu dokumentu na serwer.
+   Walidacja sprawdza czy:
+
+   - nazwa u¿ytkownika sk³ada siê z przynajmniej 2 liter, nie jest ju¿ wykorzystana w bazie danych oraz nie zawiera niecenzuralnych s³ów, 
+   - email u¿ytkownika nie jest ju¿ wykorzystany w bazie danych,
+   - has³o zwiera przynajmniej 1 literê i 1 cyfrê,
+   - u¿ytkownik nie jest robotem. 
+
+   U¿ytkownik po za³o¿eniu konta musi potwierdziæ swoj¹ to¿samoœæ, klikajac w link otrzymany w mailu.
+
+c. Logowanie
+-------------------------------
+
+   W zak³adce *logowanie* u¿ytkownik, posiadaj¹cy konto, mo¿e siê zalogowaæ. Link *Zapomnia³em has³a* umo¿liwi u¿ytkownikowi zmianê has³a je¿eli go    zapomnia³.
+
+d. Utworzenie nowego problemu
+-------------------------------
+
+   W celu utworzenia nowego problemu nale¿y otworzyæ zak³adkê *Nowy problem*. Nastêpnie u¿ytkownik musi wype³niæ formularz, podaj¹c tytu³ problemu,       kategoriê oraz opis samego problemu. Po wys³aniu formularza, problem zostaje umieszczony w zak³adce *problemy*. U¿ytkownik mo¿e w ka¿dym momencie       zmodyfikowaæ problem lub go usun¹æ. Wszyscy u¿ytkownicy portalu mog¹ go komentowaæ a tym samym rozwi¹zaæ problem.
+
+e. Zmiana osobistych danych u¿ytkownika
+---------------------------------------
+
+   Zalogowany u¿ytkownik mo¿e zmieniæ swoj¹ nazwê, adres email, zdjêcie profilowe, a tak¿e has³o w zak³adce *Mój Profil*. 
+
+
+
+4. Dokumenety projektowe
+========================
+
+a. Wykorzystane technologie
+---------------------------
+
+   Aplikacja w swoim funkcjonowaniu wykorzystuje:
+
+   - mini framework Flask oraz jego rozszerzenia (plik *requirements.txt*),
+   - zdaln¹ bazê danych PostgreSQL,
+   - framework Bootstrap,
+   - ikony Font Awesome.
+
+b. Struktura aplikacji
+----------------------
+
+   **Struktura projektu:**
+   
+   ::
+
+      +---docs  
+      |       relations.png
+      |       usage_and_design.html
+      |       usage_and_design.txt
+      |
+      \---ELEPRO
+          |   manage.py
+          |   requirements.txt
+          |   run.py
+          |   
+          +---elepro
+          |   |   app.py
+          |   |   config.py
+          |   |   extensions.py
+          |   |   __init__.py
+          |   |   
+          |   +---blueprints
+          |   |   |   __init__.py
+          |   |   |   
+          |   |   +---errors
+          |   |   |   |   views.py
+          |   |   |   |   __init__.py
+          |   |   |   |   
+          |   |   |   \---templates
+          |   |   |       \---errors
+          |   |   |               403.html
+          |   |   |               404.html
+          |   |   |               405.html
+          |   |   |               500.html
+          |   |   |           
+          |   |   +---post
+          |   |   |   |   forms.py
+          |   |   |   |   models.py
+          |   |   |   |   views.py
+          |   |   |   |   __init__.py
+          |   |   |   |   
+          |   |   |   \---templates
+          |   |   |       \---post
+          |   |   |               about.html
+          |   |   |               create_problem.html
+          |   |   |               home.html
+          |   |   |               problem.html
+          |   |   |               problems.html
+          |   |   |           
+          |   |   \---user
+          |   |       |   forms.py
+          |   |       |   functions.py
+          |   |       |   models.py
+          |   |       |   validations.py
+          |   |       |   views.py
+          |   |       |   __init__.py
+          |   |       |   
+          |   |       \---templates
+          |   |           \---user
+          |   |                   account.html
+          |   |                   login.html
+          |   |                   new_password.html
+          |   |                   register.html
+          |   |                   reset_password.html
+          |   |                   unconfirmed.html
+          |   |  
+          |   +---static
+          |   |   |   main.css
+          |   |   |   
+          |   |   \---images
+          |   |       |   logo.png
+          |   |       |   
+          |   |       \---pictures_of_users
+          |   |               
+          |   \---templates
+          |       +---includes
+          |       |       _flash_messages.html
+          |       |       _logo.html
+          |       |       _macros.html
+          |       |       _navbar.html
+          |       |       
+          |       \---layout
+          |               base.html
+          |               
+          +---migrations
+          |     
+          \---ven_elepro
+
+
+   | **ELEPRO** - g³ówny katalog aplikacji.
+   | **docs** - g³ówny katalog dokumentacji.
+   | **elepro** - katalog zawieraj¹cy kod aplikacji i pliki statyczne.
+   | **run.py** - skrypt uruchamiaj¹cy aplikacjê w œrodowisku deweloperskim.
+   | **manage.py** - skrypt zarz¹dzaj¹cy baz¹ danych.
+   | **config.py** - skrypt konfiguruj¹cy ustawienia aplikacji (wra¿liwe dane s¹ usuniête).
+   | **requirements.txt** - plik z modu³ami koniecznymi do dzia³ania aplikacji
+
+
+c. Konfiguracja aplikacji
+-------------------------
+
+   W pliku *ELEPRO/elepro/config.py* znajduje siê klasa odpowiadaj¹ca za konfiguracjê aplikacji.
+   
+
+d. Relacje w bazie danych
+-------------------------
+   
+   Flask ³¹czy siê z baz¹ danych wykorzystuj¹c rozszerzenia SQLAlchemy. Maper obiektowo relacyjny tworzy obiekty w aplikacji na podstawie tabel w bazie    danych. Relacjê miêdzy tabelami prezentuje poni¿szy diagram:
+
+   .. image:: relations.png
+      :height: 400px
+      :width: 700 px
+      :align: center
+
+   W pliku *ELEPRO/elepro/blueprints/user/models.py* znajduje siê nastêpuj¹ca klasa (odpowiadaj¹ca tabeli w bazie danych):
+
+      klasa: **User**
+   
+         Atrybuty:
+
+         - **id** - ID u¿ytkownika,
+         - **username** - nazwa u¿ytkownika,
+         - **email** - email u¿ytkownika,
+         - **image_file** - zdjêcie profilowe u¿ytkownika,
+         - **md5_hash** - kod dla gravatru u¿ytkownika,
+         - **password** - has³o u¿ytkownika,
+         - **confirmed** - stan konta (czy jest potwierdzone).
+
+         Metody:
+
+         - **change_email** - metoda zmieniaj¹ca email,
+         - **gravatar** - metoda generuj¹ca adres URL grawataru,
+         - **get_reset_token** - metoda generuj¹ca token do zresetowania has³a u¿ytkownika,
+         - **verify_reset_token** - metoda weryfikuj¹ca token do zresetowania has³a u¿ytkownika.
+
+
+
+   W pliku *ELEPRO/elepro/blueprints/post/models.py* znajduj¹ siê nastêpuj¹ce klasy:
+
+      klasa: **Problem**
+   
+         Atrybuty:
+
+         - **id** - ID problemu,
+         - **title** - tytu³ problemu,
+         - **date_posted** - data publikacji problemu,
+         - **category** - kategoria problemu,
+         - **content** - opis (zawartoœæ) problemu,
+         - **state** - stan problemu (na razie niewykorzystywany).
+
+         Metody:
+
+         - **generate_fake** - generuje losowe wpisy (dla œrodowiska deweloperskiego).
+      
+
+      klasa: **Comment**
+   
+         Atrybuty:
+
+         - **id** - ID komentarza,
+         - **body** - treœæ komentarza,
+         - **timestamp** - data utworzenia komentarza,
+         - **disabled** - dezaktywacji komentarza (na razie niewykorzystywana).   
+
+
+e. Blueprints
+-------------
+
+   Aplikacja zawiera 3 blueprinty:
+
+   - user - system zarz¹dzania u¿ytkownikami (logowanie, rejestracja, zmiana danych personalnych),
+   - post - system zarz¹dzania postami publikowanymi przez u¿ytkowników, 
+   - errors - obs³uga b³êdów.
+
+
+f. Widoki
+---------
+
+   Funkcje widoków znajduj¹ siê w plikach *views.py* dla ka¿dego blueprintu. 
+
+
+g. Formularze
+-------------
+
+   Formularze znajduj¹ siê w plikach *forms.py* dla ka¿dego blueprintu. Ka¿demu formularzowi przypisana jest jedna klasa.
+   Opis tych klas zostaje pominiêty, poniewa¿ pola w klasach odpowiadaj¹ polom formularza.
+   
+h. Szablony
+-----------
+
+   Szablony stron www, zwracanych przez poszczególne funkcje widoku, znajduj¹ siê w katalogach *templates*, odpowiednio dla ka¿dego blueprintu.
+   Szablon podstawowy strony znajduje siê w katalogu *ELEPRO/elepro/templates/layout*.
+   Szablony nawigacji (menu strony), makr Jinja2 i wiadomoœci zwrotnych (flash), znajduj¹ siê w katalogu *ELEPRO/elepro/templates/includes*.
+
+
+
+

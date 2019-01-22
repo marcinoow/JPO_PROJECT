@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Aplikacja ElePro</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="aplikacja-elepro">
+<h1 class="title">Aplikacja ElePro</h1>
+
+<div class="section" id="wprowadzenie-do-zawartosci-dokumentu">
+<span id="item-1"></span><h1>1. Wprowadzenie do zawartości dokumentu</h1>
+<p>Bieżący dokument zwiera instrukcję użytkowania aplikacji ElePro. Opisana jest w nim także architektura projektu.</p>
+</div>
+<div class="section" id="spis-tresci">
+<h1>2. Spis treści</h1>
+<p><a class="reference internal" href="#wprowadzenie-do-zawartosci-dokumentu">1. Wprowadzenie do zawartości dokumentu</a></p>
+<p><a class="reference internal" href="#spis-tresci">2. Spis treści</a></p>
+<p><a class="reference internal" href="#instrukcja-uzycia">3. Instrukcja użycia</a></p>
+<blockquote>
+<p><a class="reference internal" href="#a-pierwsze-spotkanie-z-aplikacja">a. Pierwsze spotkanie z aplikacją</a></p>
+<p><a class="reference internal" href="#b-zakladanie-konta-w-aplikacji">b. Zakładanie konta w aplikacji</a></p>
+<p><a class="reference internal" href="#c-logowanie">c. Logowanie</a></p>
+<p><a class="reference internal" href="#d-utworzenie-nowego-problemu">d. Utworzenie nowego problemu</a></p>
+<p><a class="reference internal" href="#e-zmiana-osobistych-danych-uzytkownika">e. Zmiana osobistych danych użytkownika</a></p>
+</blockquote>
+<p><a class="reference internal" href="#dokumenety-projektowe">4. Dokumenety projektowe</a></p>
+<blockquote>
+<p><a class="reference internal" href="#a-wykorzystane-technologie">a. Wykorzystane technologie</a></p>
+<p><a class="reference internal" href="#b-struktura-aplikacji">b. Struktura aplikacji</a></p>
+<p><a class="reference internal" href="#c-konfiguracja-aplikacji">c. Konfiguracja aplikacji</a></p>
+<p><a class="reference internal" href="#d-relacje-w-bazie-danych">d. Relacje w bazie danych</a></p>
+<p><a class="reference internal" href="#e-blueprints">e. Blueprints</a></p>
+<p><a class="reference internal" href="#f-widoki">f. Widoki</a></p>
+<p><a class="reference internal" href="#g-formularze">g. Formularze</a></p>
+<p><a class="reference internal" href="#h-szablony">h. Szablony</a></p>
+</blockquote>
+</div>
+<div class="section" id="instrukcja-uzycia">
+<h1>3. Instrukcja użycia</h1>
+<div class="section" id="a-pierwsze-spotkanie-z-aplikacja">
+<h2>a. Pierwsze spotkanie z aplikacją</h2>
+<blockquote>
+Adres www.domena.pl (w środowisku developerskim: <strong>localhost:5000</strong>) przeniesie nas na stronę aplikacji. Strona www jest prostym blogiem o tematyce elektroniki. Użytkownik może na niej opublikować post ze swoim problemem. Inni użytkownicy rozwiążą problem.
+W zakładce <em>problemy</em> możemy przeczytać najnowsze posty użytkowników. Tylko po rejestracji i zalogowaniu możemy utworzyć własny problem i skomentować         (rozwiązać) problem innego członka społeczności.</blockquote>
+</div>
+<div class="section" id="b-zakladanie-konta-w-aplikacji">
+<h2>b. Zakładanie konta w aplikacji</h2>
+<blockquote>
+<p>W celu założenia konta udajemy się do zakładki <em>rejestracja</em>. Wypełniamy formularz. Pola formularza są poddane walidacji po przesłaniu dokumentu na serwer.
+Walidacja sprawdza czy:</p>
+<ul class="simple">
+<li>nazwa użytkownika składa się z przynajmniej 2 liter, nie jest już wykorzystana w bazie danych oraz nie zawiera niecenzuralnych słów,</li>
+<li>email użytkownika nie jest już wykorzystany w bazie danych,</li>
+<li>hasło zwiera przynajmniej 1 literę i 1 cyfrę,</li>
+<li>użytkownik nie jest robotem.</li>
+</ul>
+<p>Użytkownik po założeniu konta musi potwierdzić swoją tożsamość, klikajac w link otrzymany w mailu.</p>
+</blockquote>
+</div>
+<div class="section" id="c-logowanie">
+<h2>c. Logowanie</h2>
+<blockquote>
+W zakładce <em>logowanie</em> użytkownik, posiadający konto, może się zalogować. Link <em>Zapomniałem hasła</em> umożliwi użytkownikowi zmianę hasła jeżeli go    zapomniał.</blockquote>
+</div>
+<div class="section" id="d-utworzenie-nowego-problemu">
+<h2>d. Utworzenie nowego problemu</h2>
+<blockquote>
+W celu utworzenia nowego problemu należy otworzyć zakładkę <em>Nowy problem</em>. Następnie użytkownik musi wypełnić formularz, podając tytuł problemu,       kategorię oraz opis samego problemu. Po wysłaniu formularza, problem zostaje umieszczony w zakładce <em>problemy</em>. Użytkownik może w każdym momencie       zmodyfikować problem lub go usunąć. Wszyscy użytkownicy portalu mogą go komentować a tym samym rozwiązać problem.</blockquote>
+</div>
+<div class="section" id="e-zmiana-osobistych-danych-uzytkownika">
+<h2>e. Zmiana osobistych danych użytkownika</h2>
+<blockquote>
+Zalogowany użytkownik może zmienić swoją nazwę, adres email, zdjęcie profilowe, a także hasło w zakładce <em>Mój Profil</em>.</blockquote>
+</div>
+</div>
+<div class="section" id="dokumenety-projektowe">
+<h1>4. Dokumenety projektowe</h1>
+<div class="section" id="a-wykorzystane-technologie">
+<h2>a. Wykorzystane technologie</h2>
+<blockquote>
+<p>Aplikacja w swoim funkcjonowaniu wykorzystuje:</p>
+<ul class="simple">
+<li>mini framework Flask oraz jego rozszerzenia (plik <em>requirements.txt</em>),</li>
+<li>zdalną bazę danych PostgreSQL,</li>
+<li>framework Bootstrap,</li>
+<li>ikony Font Awesome.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="b-struktura-aplikacji">
+<h2>b. Struktura aplikacji</h2>
+<blockquote>
+<p><strong>Struktura projektu:</strong></p>
+<pre class="literal-block">
++---docs
+|       relations.png
+|       usage_and_design.html
+|       usage_and_design.txt
+|
+\---ELEPRO
+    |   manage.py
+    |   requirements.txt
+    |   run.py
+    |
+    +---elepro
+    |   |   app.py
+    |   |   config.py
+    |   |   extensions.py
+    |   |   __init__.py
+    |   |
+    |   +---blueprints
+    |   |   |   __init__.py
+    |   |   |
+    |   |   +---errors
+    |   |   |   |   views.py
+    |   |   |   |   __init__.py
+    |   |   |   |
+    |   |   |   \---templates
+    |   |   |       \---errors
+    |   |   |               403.html
+    |   |   |               404.html
+    |   |   |               405.html
+    |   |   |               500.html
+    |   |   |
+    |   |   +---post
+    |   |   |   |   forms.py
+    |   |   |   |   models.py
+    |   |   |   |   views.py
+    |   |   |   |   __init__.py
+    |   |   |   |
+    |   |   |   \---templates
+    |   |   |       \---post
+    |   |   |               about.html
+    |   |   |               create_problem.html
+    |   |   |               home.html
+    |   |   |               problem.html
+    |   |   |               problems.html
+    |   |   |
+    |   |   \---user
+    |   |       |   forms.py
+    |   |       |   functions.py
+    |   |       |   models.py
+    |   |       |   validations.py
+    |   |       |   views.py
+    |   |       |   __init__.py
+    |   |       |
+    |   |       \---templates
+    |   |           \---user
+    |   |                   account.html
+    |   |                   login.html
+    |   |                   new_password.html
+    |   |                   register.html
+    |   |                   reset_password.html
+    |   |                   unconfirmed.html
+    |   |
+    |   +---static
+    |   |   |   main.css
+    |   |   |
+    |   |   \---images
+    |   |       |   logo.png
+    |   |       |
+    |   |       \---pictures_of_users
+    |   |
+    |   \---templates
+    |       +---includes
+    |       |       _flash_messages.html
+    |       |       _logo.html
+    |       |       _macros.html
+    |       |       _navbar.html
+    |       |
+    |       \---layout
+    |               base.html
+    |
+    +---migrations
+    |
+    \---ven_elepro
+</pre>
+<div class="line-block">
+<div class="line"><strong>ELEPRO</strong> - główny katalog aplikacji.</div>
+<div class="line"><strong>docs</strong> - główny katalog dokumentacji.</div>
+<div class="line"><strong>elepro</strong> - katalog zawierający kod aplikacji i pliki statyczne.</div>
+<div class="line"><strong>run.py</strong> - skrypt uruchamiający aplikację w środowisku deweloperskim.</div>
+<div class="line"><strong>manage.py</strong> - skrypt zarządzający bazą danych.</div>
+<div class="line"><strong>config.py</strong> - skrypt konfigurujący ustawienia aplikacji (wrażliwe dane są usunięte).</div>
+<div class="line"><strong>requirements.txt</strong> - plik z modułami koniecznymi do działania aplikacji</div>
+</div>
+</blockquote>
+</div>
+<div class="section" id="c-konfiguracja-aplikacji">
+<h2>c. Konfiguracja aplikacji</h2>
+<blockquote>
+W pliku <em>ELEPRO/elepro/config.py</em> znajduje się klasa odpowiadająca za konfigurację aplikacji.</blockquote>
+</div>
+<div class="section" id="d-relacje-w-bazie-danych">
+<h2>d. Relacje w bazie danych</h2>
+<blockquote>
+<p>Flask łączy się z bazą danych wykorzystując rozszerzenia SQLAlchemy. Maper obiektowo relacyjny tworzy obiekty w aplikacji na podstawie tabel w bazie    danych. Relację między tabelami prezentuje poniższy diagram:</p>
+<img alt="relations.png" class="align-center" src="relations.png" style="width: 700px; height: 400px;" />
+<p>W pliku <em>ELEPRO/elepro/blueprints/user/models.py</em> znajduje się następująca klasa (odpowiadająca tabeli w bazie danych):</p>
+<blockquote>
+<p>klasa: <strong>User</strong></p>
+<blockquote>
+<p>Atrybuty:</p>
+<ul class="simple">
+<li><strong>id</strong> - ID użytkownika,</li>
+<li><strong>username</strong> - nazwa użytkownika,</li>
+<li><strong>email</strong> - email użytkownika,</li>
+<li><strong>image_file</strong> - zdjęcie profilowe użytkownika,</li>
+<li><strong>md5_hash</strong> - kod dla gravatru użytkownika,</li>
+<li><strong>password</strong> - hasło użytkownika,</li>
+<li><strong>confirmed</strong> - stan konta (czy jest potwierdzone).</li>
+</ul>
+<p>Metody:</p>
+<ul class="simple">
+<li><strong>change_email</strong> - metoda zmieniająca email,</li>
+<li><strong>gravatar</strong> - metoda generująca adres URL grawataru,</li>
+<li><strong>get_reset_token</strong> - metoda generująca token do zresetowania hasła użytkownika,</li>
+<li><strong>verify_reset_token</strong> - metoda weryfikująca token do zresetowania hasła użytkownika.</li>
+</ul>
+</blockquote>
+</blockquote>
+<p>W pliku <em>ELEPRO/elepro/blueprints/post/models.py</em> znajdują się następujące klasy:</p>
+<blockquote>
+<p>klasa: <strong>Problem</strong></p>
+<blockquote>
+<p>Atrybuty:</p>
+<ul class="simple">
+<li><strong>id</strong> - ID problemu,</li>
+<li><strong>title</strong> - tytuł problemu,</li>
+<li><strong>date_posted</strong> - data publikacji problemu,</li>
+<li><strong>category</strong> - kategoria problemu,</li>
+<li><strong>content</strong> - opis (zawartość) problemu,</li>
+<li><strong>state</strong> - stan problemu (na razie niewykorzystywany).</li>
+</ul>
+<p>Metody:</p>
+<ul class="simple">
+<li><strong>generate_fake</strong> - generuje losowe wpisy (dla środowiska deweloperskiego).</li>
+</ul>
+</blockquote>
+<p>klasa: <strong>Comment</strong></p>
+<blockquote>
+<p>Atrybuty:</p>
+<ul class="simple">
+<li><strong>id</strong> - ID komentarza,</li>
+<li><strong>body</strong> - treść komentarza,</li>
+<li><strong>timestamp</strong> - data utworzenia komentarza,</li>
+<li><strong>disabled</strong> - dezaktywacji komentarza (na razie niewykorzystywana).</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="e-blueprints">
+<h2>e. Blueprints</h2>
+<blockquote>
+<p>Aplikacja zawiera 3 blueprinty:</p>
+<ul class="simple">
+<li>user - system zarządzania użytkownikami (logowanie, rejestracja, zmiana danych personalnych),</li>
+<li>post - system zarządzania postami publikowanymi przez użytkowników,</li>
+<li>errors - obsługa błędów.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="f-widoki">
+<h2>f. Widoki</h2>
+<blockquote>
+Funkcje widoków znajdują się w plikach <em>views.py</em> dla każdego blueprintu.</blockquote>
+</div>
+<div class="section" id="g-formularze">
+<h2>g. Formularze</h2>
+<blockquote>
+Formularze znajdują się w plikach <em>forms.py</em> dla każdego blueprintu. Każdemu formularzowi przypisana jest jedna klasa.
+Opis tych klas zostaje pominięty, ponieważ pola w klasach odpowiadają polom formularza.</blockquote>
+</div>
+<div class="section" id="h-szablony">
+<h2>h. Szablony</h2>
+<blockquote>
+Szablony stron www, zwracanych przez poszczególne funkcje widoku, znajdują się w katalogach <em>templates</em>, odpowiednio dla każdego blueprintu.
+Szablon podstawowy strony znajduje się w katalogu <em>ELEPRO/elepro/templates/layout</em>.
+Szablony nawigacji (menu strony), makr Jinja2 i wiadomości zwrotnych (flash), znajdują się w katalogu <em>ELEPRO/elepro/templates/includes</em>.</blockquote>
+</div>
+</div>
+</div>
+</body>
+</html>
